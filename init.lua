@@ -5,7 +5,7 @@
 local hex = function(v) return string.format("%02x", v) end
 local whiten = function(base, ratio)
 	local darkness = 255 - base
-	return 255 - (darkness * ratio)
+	return math.floor(255 - (darkness * ratio))
 end
 
 -- map a function over a table's keys -
@@ -19,6 +19,13 @@ local filter = function(f, tbl)
 end
 -- rgb table wrapper, somewhat like vector.new
 local rgb = function(r, g, b) return {r=r,g=g,b=b} end
+-- does similar, but applies some whitening to base colour values.
+local rgbw = function(rd, gd, bd, w)
+	local r = whiten(rd, w)
+	local g = whiten(gd, w)
+	local b = whiten(bd, w)
+	return rgb(r, g, b)
+end
 
 
 
@@ -58,6 +65,8 @@ local magnetic = function(output)
 		}
 	}
 end
+-- methods when none implemented yet
+local none = function() return {} end
 
 local stone_db = {	-- ores appearing in default:stone
 	default = {
@@ -66,7 +75,21 @@ local stone_db = {	-- ores appearing in default:stone
 			name = "iron",
 			purity = 0.2,
 			methods = magnetic("default:iron_lump")
-		}
+		},
+		stone_with_diamond = {
+			--colour = rgb(123, 244, 242),
+			colour = rgbw(110, 220, 255, 0.5),
+			name = "diamond",
+			purity = 0.2,
+			methods = none,
+		},
+		stone_with_copper = {
+			-- 171 127 76
+			colour = rgb(200, 128, 61),
+			name = "copper",
+			purity = 0.4,
+			methods = none
+		},
 	}
 }
 
