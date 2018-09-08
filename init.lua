@@ -85,7 +85,7 @@ local stone_db = {	-- ores appearing in default:stone
 		},
 		stone_with_copper = {
 			-- 171 127 76
-			colour = rgb(200, 128, 61),
+			colour = rgb(171, 127, 76),
 			name = "copper",
 			purity = 0.4,
 			methods = none
