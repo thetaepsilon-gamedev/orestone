@@ -90,6 +90,13 @@ local stone_db = {	-- ores appearing in default:stone
 			purity = 0.4,
 			methods = none
 		},
+		stone_with_gold = {
+			-- 226 203 8
+			colour = rgb(248, 192, 5),
+			name = "gold",
+			purity = 0.3,
+			methods = none
+		},
 	}
 }
 
