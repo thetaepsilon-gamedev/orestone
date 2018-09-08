@@ -26,6 +26,10 @@ local rgbw = function(rd, gd, bd, w)
 	local b = whiten(bd, w)
 	return rgb(r, g, b)
 end
+-- pure greyscale helper
+local grey = function(t)
+	return rgb(t, t, t)
+end
 
 
 
@@ -95,6 +99,14 @@ local stone_db = {	-- ores appearing in default:stone
 			colour = rgb(248, 192, 5),
 			name = "gold",
 			purity = 0.3,
+			methods = none
+		},
+		stone_with_tin = {
+			-- somewhat guessed, it's grey anyways...
+			-- 200 200 200
+			colour = grey(200),
+			name = "tin",
+			purity = 0.4,
 			methods = none
 		},
 	}
